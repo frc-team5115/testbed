@@ -13,6 +13,9 @@ public class DriveTrain {
 	CANTalon backleft;
 	CANTalon backright;
 	
+	public int direction;
+	
+	
 	public DriveTrain() {
 		frontleft = new CANTalon(Constants.FRONT_LEFT_MOTOR_ID);
 		frontright = new CANTalon(Constants.FRONT_RIGHT_MOTOR_ID);
@@ -25,6 +28,7 @@ public class DriveTrain {
 		backright.set(frontright.getDeviceID());
 		
 		frontright.setInverted(true);
+		direction = 1;
 	}
 	
 	public void drive(double leftSpeed, double rightSpeed, double throttle) {
@@ -37,8 +41,38 @@ public class DriveTrain {
 			leftSpeed /= rightSpeed;
 		}
 		
-		frontleft.set(leftSpeed);
-		frontright.set(rightSpeed);
+		frontleft.set(-direction * leftSpeed * Constants.THROTTLE);
+		frontright.set(-direction * rightSpeed * Constants.THROTTLE);
+	}
+	
+	 public double leftDist() {
+	    	double leftDist = frontleft.getPosition() * direction;
+	    	return leftDist / 1440 * 7 * Math.PI / 12;
+	    }
+	    
+	    public double rightDist() {
+	    	double rightDist = -frontright.getPosition() * direction;
+	    	return rightDist / 1440 * 7 * Math.PI / 12;
+	    }
+	    
+	    public double distanceTraveled() {
+	    	return (leftDist() + rightDist()) / 2;
+	    }
+	    
+	    public double leftSpeed() {
+	    	double leftspeed = frontleft.getSpeed();
+	    	return leftspeed;
+	    }
+	    
+	    public double rightSpeed() {
+	    	double rightspeed = frontright.getSpeed();
+	    	return rightspeed;
+	    }
+	    
+	    public void resetEncoders() {
+	    	frontleft.setPosition(1);
+	    	frontright.setPosition(1);
+	    }
 	}
 
-}
+

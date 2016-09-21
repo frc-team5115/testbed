@@ -21,14 +21,17 @@ public class HoffDrive extends StateMachineBase {
 			throttle = InputManager.getThrottle();
 
 			// Negative intertia. Increasing constants makes it more "repsonsive"
-			dSpeed = (speed - lastSpeed) / Constants.DELAY;
-			dTurn = (turn - lastTurn) / Constants.DELAY;
-			speed += Constants.NEG_INERTIA_SPEED * dSpeed;
-			turn += Constants.NEG_INERTIA_TURN * dTurn;
+//			dSpeed = (speed - lastSpeed) / Constants.DELAY;
+//			dTurn = (turn - lastTurn) / Constants.DELAY;
+//			speed += Constants.NEG_INERTIA_SPEED * dSpeed;
+//			turn += Constants.NEG_INERTIA_TURN * dTurn;
 
 			lastSpeed = speed;
 			lastTurn = turn;
-
+			
+			System.out.println(Robot.drivetrain.rightSpeed());
+			System.out.println(Robot.drivetrain.leftSpeed());
+			
 			// Turning in place and quickturn button
 			if (speed == 0 || InputManager.quickTurn()) {
 				turnPower = turn * Constants.QUICK_TURN_POWER;

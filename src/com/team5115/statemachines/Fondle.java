@@ -12,16 +12,16 @@ public class Fondle extends StateMachineBase{
 	public Fondle() {
 		intake = InputManager.intake();
 		release = InputManager.release();
-		isFondling = InputManager.isfondled();
+	
 	}
 	
 	public void update() {
 		switch (state) {
 		case 1:    //STATE 1 Waiting for input
 			
-			if(intake == true)
+			if(InputManager.intake())
 				state = 2;
-			if(release == true)
+			if(InputManager.release())
 				state = 3;
 			
 			break;

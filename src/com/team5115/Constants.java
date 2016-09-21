@@ -5,8 +5,8 @@ public class Constants {
 	public static final double DELAY = 0.005;
 
 	// Buttons and Axes
-	public static final int AXIS_X = 1;
-	public static final int AXIS_Y = 2;
+	public static final int AXIS_X = 2;
+	public static final int AXIS_Y = 1;
 	public static final int BUTTON_QUICK_TURN = 9;
 	public static final double JOYSTICK_DEADBAND = 0.01;
 	public static final int BUTTON_ARM_UP = 6;
@@ -21,7 +21,8 @@ public class Constants {
 	public static final int BACK_RIGHT_MOTOR_ID = 4;
 
 	// Driving
-	public static final double QUICK_TURN_POWER = 0.5;
+	public static final double THROTTLE = 0.6;
+	public static final double QUICK_TURN_POWER = 1;
 	public static final double NEG_INERTIA_TURN = 1.0;
 	public static final double NEG_INERTIA_SPEED = 1.0;
 	
@@ -29,5 +30,9 @@ public class Constants {
 	public static final int BALL_FONDLER_LIMIT = 0;
 	public static final int ARM_LIMIT_TOP = 1;
 	public static final int ARM_LIMIT_BOTTOM = 2;
+	
+	//Directions
+	public static final int DIR_ARM = -1;
+	public static final int DIR_BALL = 1;
 
 }

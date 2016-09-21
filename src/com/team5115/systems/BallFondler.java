@@ -1,30 +1,32 @@
 package com.team5115.systems;
 
+import com.team5115.Constants;
 import com.team5115.robot.InputManager;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
 
 public class BallFondler {
 	Victor shooter;
 	boolean intake;
 	boolean release;
-	boolean isFondling;
-	
+	DigitalInput isFondling;
 	
 	public BallFondler() {
-		shooter = new Victor(0);
+		shooter = new Victor(2);
 		intake = InputManager.intake();
 		release = InputManager.release();
-		isFondling = InputManager.isfondled();
+		isFondling = new DigitalInput(Constants.BALL_FONDLER_LIMIT);
+
 	}
 	
 	public void fondle() {
-		if(intake == true)
+		if(intake)
 			shooter.set(.7);
 	}
 	
 	public void stopFondling() {
-		if(release == true)
+		if(release)
 			shooter.set(-.7);
 	}
 	
@@ -33,4 +35,9 @@ public class BallFondler {
 			shooter.set(0);
 		}
 	}
+
+	public boolean isfondled(){
+		return isFondling.get();
+	}
+
 }

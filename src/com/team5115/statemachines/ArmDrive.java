@@ -11,12 +11,17 @@ public class ArmDrive extends StateMachineBase {
 	
 	public void update() {
 		switch (state) {
-		case 1:
+		case 1:		//waiting for input
 			
-			Robot.arm.lift();
-			Robot.arm.lower();
 			Robot.arm.hold();
 			
+			if (InputManager.flex()) {
+				Robot.arm.lift();
+			}
+			
+			if (InputManager.relax()) {
+				Robot.arm.lower();
+			}
 			break;
 
 		}

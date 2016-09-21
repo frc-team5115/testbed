@@ -9,16 +9,14 @@ import edu.wpi.first.wpilibj.DigitalInput;
 public class InputManager {
 	
 	static Joystick joy = new Joystick(0);
-	static DigitalInput isFondling = new DigitalInput(Constants.BALL_FONDLER_LIMIT);
-	static DigitalInput isTopLimit = new DigitalInput(Constants.ARM_LIMIT_TOP);
-	static DigitalInput isBottomLimit = new DigitalInput(Constants.ARM_LIMIT_BOTTOM);
+	
 	
 	public static double getX() {
 		return treatAxis(joy.getRawAxis(Constants.AXIS_X));
 	}
 	
 	public static double getY() {
-		return treatAxis(joy.getRawAxis(Constants.AXIS_Y));
+		return -treatAxis(joy.getRawAxis(Constants.AXIS_Y));
 	}
 	
 	public static double getThrottle() {
@@ -59,15 +57,4 @@ public class InputManager {
 		 return joy.getRawButton(Constants.BUTTON_FONDLE_STOP);
 	}
 	
-	public static boolean isfondled(){
-		return isFondling.get();
-	}
-	
-	public static boolean isTopLimit(){
-		return isTopLimit.get();
-	}
-	
-	public static boolean isBottomLimit(){
-		return isBottomLimit.get();
-	}
 }

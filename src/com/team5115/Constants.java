@@ -1,6 +1,10 @@
 package com.team5115;
 
 public class Constants {
+	
+	/**
+	 * The Constants class is where any constant values are declared to be used by other the rest of the code
+	 */
 
 	public static final double DELAY = 0.005;
 
